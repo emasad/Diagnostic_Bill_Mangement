@@ -13,5 +13,15 @@ namespace DiagnosticBillManagementApp.UI
         {
 
         }
+
+        protected void billShowButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void billPdfButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

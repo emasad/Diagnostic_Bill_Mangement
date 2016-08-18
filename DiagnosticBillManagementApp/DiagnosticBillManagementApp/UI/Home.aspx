@@ -11,7 +11,7 @@
     <div>
         <a href="TestTypeSetup.aspx">Test Type Setup</a><br />
         <a href="TestSetup.aspx">Test Setup</a><br />
-        <a href="TestReqestEntry.aspx">Test Request Entry</a><br />
+        <a href="TestRequestEntry.aspx">Test Request Entry</a><br />
         <a href="Payment.aspx">Payment</a><br />
         <a href="TestWiseReport.aspx">Test Wise Report</a><br />
         <a href="TypeWiseReport.aspx">Type Wise Report</a><br />

@@ -23,7 +23,7 @@
             <tr>
                 <td>Fee</td>
                 <td>
-                    <asp:TextBox ID="feeTextBox" runat="server" Height="18px" OnTextChanged="feeTextBox_TextChanged" Width="227px"></asp:TextBox>
+                    <asp:TextBox ID="feeTextBox" runat="server" Height="18px" Width="227px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -36,7 +36,7 @@
             <tr>
                 <td>&nbsp;</td>
                 <td>
-                    <asp:Button ID="saveButton" runat="server" Text="Save" Width="102px" />
+                    <asp:Button ID="saveButton" runat="server" Text="Save" Width="102px" OnClick="saveButton_Click" />
                 </td>
             </tr>
         </table>

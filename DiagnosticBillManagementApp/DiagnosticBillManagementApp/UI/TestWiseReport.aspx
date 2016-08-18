@@ -28,7 +28,7 @@
                     <td>
                         <asp:TextBox ID="testToDateTextBox" runat="server"></asp:TextBox>
 &nbsp;&nbsp;
-                        <asp:Button ID="testShowButton" runat="server" OnClick="testShowButton_Click" Text="Show" />
+                        <asp:Button ID="testShowButton" runat="server" Text="Show" OnClick="testShowButton_Click" />
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -39,9 +39,9 @@
             </asp:GridView>
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="testPdfButton" runat="server" Text="Pdf" />
+            <asp:Button ID="testPdfButton" runat="server" Text="Pdf" OnClick="testPdfButton_Click" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="testTotalTextBox" runat="server" OnTextChanged="totalTextBox_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="testTotalTextBox" runat="server"></asp:TextBox>
             <br />
             
 

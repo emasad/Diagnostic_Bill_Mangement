@@ -23,7 +23,7 @@
                     <asp:TextBox ID="billNoTextBox" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Button ID="searchButton" runat="server" Text="Search" />
+                    <asp:Button ID="searchButton" runat="server" Text="Search" OnClick="searchButton_Click" />
                 </td>
             </tr>
         </table>
@@ -84,7 +84,7 @@
             <tr>
                 <td>&nbsp;</td>
                 <td>
-                    <asp:Button ID="payButton" runat="server" Text="Pay" />
+                    <asp:Button ID="payButton" runat="server" Text="Pay" OnClick="payButton_Click" />
                 </td>
             </tr>
         </table>
