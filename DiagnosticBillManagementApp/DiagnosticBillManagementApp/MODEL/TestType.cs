@@ -5,7 +5,9 @@ using System.Web;
 
 namespace DiagnosticBillManagementApp.MODEL
 {
-    public class TestClass
+    public class TestType
     {
+        public int Id { get; set; }
+        public string TypeName { get; set; }
     }
 }

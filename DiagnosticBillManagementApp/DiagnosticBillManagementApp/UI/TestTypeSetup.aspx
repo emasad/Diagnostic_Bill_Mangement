@@ -30,7 +30,24 @@
             </tr>
         </table>
         <p>
-            <asp:GridView ID="showTypeNameGridView" runat="server">
+            <asp:GridView ID="showTypeNameGridView" runat="server" AutoGenerateColumns="False">
+                
+                <Columns>
+               <asp:TemplateField HeaderText="SL">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                 <asp:TemplateField HeaderText="Type Name">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("TypeName") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                
+                 
+            </Columns>
             </asp:GridView>
         </p>
         <p>
