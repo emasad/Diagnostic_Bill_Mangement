@@ -8,6 +8,7 @@ Layer: UI
 	Home.aspx
 	TestTypeSetup.aspx
 		typeNameTextBox
+		messgaeLabel
 		saveButton
 		showTypeNameGridView
 	TestSetup.aspx

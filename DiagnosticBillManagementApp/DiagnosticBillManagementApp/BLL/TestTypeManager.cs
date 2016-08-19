@@ -23,6 +23,10 @@ namespace DiagnosticBillManagementApp.BLL
 
         }
 
+        public bool SearchTestByTypeName(string typeName)
+        {
+            return aTestTypeGateway.GetTypeTestByTypeName(typeName);
+        }
 
 
 

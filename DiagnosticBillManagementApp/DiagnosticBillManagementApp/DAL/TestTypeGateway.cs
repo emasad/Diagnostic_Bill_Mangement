@@ -14,7 +14,7 @@ namespace DiagnosticBillManagementApp.DAL
         public int Save(TestType aTestType)
         {
             SqlConnection connection = new SqlConnection(connectionString);
-            string query = "INSET INTO t_typename(TypeName) VALUES('" + aTestType.TypeName + "')";
+            string query = "INSERT INTO t_typename(TypeName) VALUES('" + aTestType.TypeName + "')";
 
             SqlCommand command= new SqlCommand(query,connection);
             connection.Open();
@@ -37,10 +37,12 @@ namespace DiagnosticBillManagementApp.DAL
 
             if (reader.HasRows)
             {
+                int i = 0;
                 while (reader.Read())
                 {
                     TestType aTestType= new TestType();
-                    aTestType.Id = int.Parse((reader["Id"]).ToString());
+                    i++;
+                    aTestType.Id = i;
                     aTestType.TypeName = reader["TypeName"].ToString();
                     testTypes.Add(aTestType);
                 }
@@ -50,7 +52,28 @@ namespace DiagnosticBillManagementApp.DAL
             connection.Close();
             return testTypes;
         }
+
+        public bool GetTypeTestByTypeName(string typeName)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            string query = "SELECT *FROM t_typename WHERE TypeName='"+typeName+"'";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
         
+
 
 
     }
