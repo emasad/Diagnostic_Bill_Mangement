@@ -41,9 +41,39 @@
             </tr>
         </table>
         <p>
-            &nbsp;</p>
+            <asp:Label ID="messageLabel" runat="server"></asp:Label>
+        </p>
         <p>
-            <asp:GridView ID="showTestInfoGridView" runat="server">
+            <asp:GridView ID="showTestInfoGridView" runat="server" AutoGenerateColumns="False">
+                
+                <Columns>
+               <asp:TemplateField HeaderText="SL">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("TestId") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                 <asp:TemplateField HeaderText="Test Name">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("TestName") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                    <asp:TemplateField HeaderText="Fee">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("Fee") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                 
+               <asp:TemplateField HeaderText="Type">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("TypeName") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>     
+
+            </Columns>
+
             </asp:GridView>
         </p>
         <p>
