@@ -27,6 +27,18 @@ Layer: UI
 		totalSaveButton
 		messageLabel
 	Payment.aspx
+		billNoTextBox
+		messageLabel
+		searchButton
+		paymentGridView
+		billDateLabel
+		totalFeeLabel
+		paidAmountLabel
+		dueAmountLabel
+		amountTextBox
+		payButton
+
+
 	TestWiseReport.aspx
 	TypeWiseReport.aspx
 	UnpaidBillReport.aspx
