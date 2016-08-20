@@ -11,6 +11,17 @@ namespace DiagnosticBillManagementApp.BLL
     {
         TestRequestGateway aTestRequestGateway= new TestRequestGateway();
 
+        //public double TotalFee(int id)
+        //{
+        //    double result = aTestRequestGateway.TotalFee(id);
+        //    return result;
+        //}
+        public bool UpdateDateBill(int id, double totalBill, double paidBill, DateTime aDateTime)
+        {
+            bool isUpdate = aTestRequestGateway.UpdateDateBill(id, totalBill, paidBill, aDateTime) > 0;
+            return isUpdate;
+        }
+
         public List<TestRequest> GetAllTypeNameFee(int testSetupId)
         {
             return aTestRequestGateway.GetAllTypeNameFee(testSetupId);

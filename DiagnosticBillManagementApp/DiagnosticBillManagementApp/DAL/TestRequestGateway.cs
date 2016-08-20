@@ -12,6 +12,26 @@ namespace DiagnosticBillManagementApp.DAL
 
         string connectionString = "Server=ASAD;Database=DiagnosticDB;Integrated Security=true";
 
+        //public double TotalFee(int testSetupId)
+        //{
+        //    SqlConnection connection = new SqlConnection(connectionString);
+        //    SqlCommand command = new SqlCommand();
+        //    double totalFee = 0;
+        //    string query = "SELECT SUM(Fee) AS TotalFee ViewTestRequestEntry WHERE Id='" + testSetupId + "'";
+        //    command.Connection = connection;
+        //    command.CommandText = query;
+        //    connection.Open();
+        //    SqlDataReader reader = command.ExecuteReader();
+            
+        //        reader.Read();
+
+        //        totalFee = Convert.ToDouble(reader["TotalFee"].ToString());
+        //        reader.Close();
+        //    connection.Close();
+        //    return totalFee;
+
+
+        //}
 
         public List<TestRequest> GetAllTypeNameFee(int testSetupId)
         {
@@ -89,6 +109,19 @@ namespace DiagnosticBillManagementApp.DAL
             connection.Close();
             return rowAffected;
 
+        }
+
+        public int UpdateDateBill(int id, double totalBill, double paidBill, DateTime aDateTime)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            string query = "UPDATE t_testrequest SET TotalBill='" + totalBill + "', PaidBill='" + paidBill + "', Date='" + aDateTime + "'  WHERE Id='" + id + "'";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            int rowAffected = command.ExecuteNonQuery();
+            connection.Close();
+            return rowAffected;
+            
         }
 
         public int SaveBillNumber(int id, string billNumber)

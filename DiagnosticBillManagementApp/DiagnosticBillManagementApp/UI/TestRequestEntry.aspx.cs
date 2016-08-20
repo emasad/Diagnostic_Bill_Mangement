@@ -15,6 +15,9 @@ namespace DiagnosticBillManagementApp.UI
         public int billNumber=0;
         private int testRequestId;
         private int testSetupId;
+        private double Sum=0;
+        private double lastItem=0;
+        private double total = 0;
         TestRequestManager aTestRequestManager= new TestRequestManager();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -69,6 +72,7 @@ namespace DiagnosticBillManagementApp.UI
                     }
 
                     LoadTestNameGridView();
+                    
 
                     ViewState["Id"] = testRequestId;
 
@@ -92,9 +96,13 @@ namespace DiagnosticBillManagementApp.UI
                     messageLabel.Text = "Fail.";
                 }
                 LoadTestNameGridView();
-
+                
             }
-            
+            List<TestRequest> aTestTypes = aTestRequestManager.GetAllTypeNameFee(testRequestId);
+
+            total = aTestTypes.Sum(item => item.Fee);
+            testRequestTotalTextBox.Text = total.ToString();
+            feeTextBox.Text = aTestTypes.Last().Fee.ToString();
 
         }
 
@@ -110,7 +118,17 @@ namespace DiagnosticBillManagementApp.UI
         protected void totalSaveButton_Click(object sender, EventArgs e)
         {
             
+            //double result = aTestRequestManager.TotalFee(testRequestId);
+            testRequestId = aTestRequestManager.GetTestRequestId();
 
+            DateTime today = DateTime.Today;
+            double paidBill = 0;
+
+            List<TestRequest> aTestTypes = aTestRequestManager.GetAllTypeNameFee(testRequestId);
+
+            total = aTestTypes.Sum(item => item.Fee);
+
+            bool isUpaded= aTestRequestManager.UpdateDateBill(testRequestId, total, paidBill, today);
             ViewState["Id"] = null;
         }
 
