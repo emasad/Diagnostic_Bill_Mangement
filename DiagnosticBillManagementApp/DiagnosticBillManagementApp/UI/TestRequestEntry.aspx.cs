@@ -21,12 +21,7 @@ namespace DiagnosticBillManagementApp.UI
         TestRequestManager aTestRequestManager= new TestRequestManager();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    patientNameTextBox.Text = aTestRequest.PatientName;
-            //    dateBirthTextBox.Text = aTestRequest.DateOfBirth.ToString();
-            //    mobileNoTextBox.Text = aTestRequest.MobileNo;
-            //}
+            
 
             if (!IsPostBack)
             {
@@ -64,7 +59,7 @@ namespace DiagnosticBillManagementApp.UI
 
                     if (aTestRequestManager.SetRelations(testRequestId, testSetupId))
                     {
-                        messageLabel.Text = "Saved.";
+                        messageLabel.Text = "ID no "+testSetupId+" is inseted.";
                     }
                     else
                     {
@@ -89,7 +84,7 @@ namespace DiagnosticBillManagementApp.UI
 
                 if (aTestRequestManager.SetRelations(testRequestId, testSetupId))
                 {
-                    messageLabel.Text = "Saved.";
+                    messageLabel.Text ="ID no "+testSetupId+"is insered.";
                 }
                 else
                 {
@@ -129,7 +124,23 @@ namespace DiagnosticBillManagementApp.UI
             total = aTestTypes.Sum(item => item.Fee);
 
             bool isUpaded= aTestRequestManager.UpdateDateBill(testRequestId, total, paidBill, today);
+            if (isUpaded)
+            {
+                totalSaveLabel.Text = "All info Succesfully inserted.";
+            }
+            else
+            {
+                totalSaveLabel.Text = "Insertion is Fail.";
+                
+            }
             ViewState["Id"] = null;
+            patientNameTextBox.Text="";
+            dateBirthTextBox.Text = "";
+            mobileNoTextBox.Text="";
+            showTestRequestGridView.DataSource = null;
+            showTestRequestGridView.DataBind();
+
+
         }
 
         private void LoadTestNameGridView()

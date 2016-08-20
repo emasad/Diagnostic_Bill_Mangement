@@ -89,6 +89,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="totalSaveButton" runat="server" Text="Save" Width="73px" OnClick="totalSaveButton_Click" />
         <br />
+        <br />
+            <asp:Label ID="totalSaveLabel" runat="server"></asp:Label>
+        <br />
 
         <br />
 
