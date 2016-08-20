@@ -35,7 +35,7 @@ namespace DiagnosticBillManagementApp.UI
 
         protected void saveButton_Click(object sender, EventArgs e)
         {
-            if (i==0)
+            if (ViewState["Id"] == null)
             {
 
                 if (patientNameTextBox.Text == "" || mobileNoTextBox.Text == "" || dateBirthTextBox.Text=="")
@@ -60,10 +60,10 @@ namespace DiagnosticBillManagementApp.UI
                     {
                         messageLabel.Text = "Fail.";
                     }
-                   
 
-                    i++;
-                    
+
+                    ViewState["Id"] = testRequestId;
+
                 }
                 
 
