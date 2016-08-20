@@ -12,6 +12,42 @@ namespace DiagnosticBillManagementApp.DAL
 
         string connectionString = "Server=ASAD;Database=DiagnosticDB;Integrated Security=true";
 
+
+        public List<TestRequest> GetAllTypeNameFee(int testSetupId)
+        {
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand();
+
+            string query = "SELECT *FROM ViewTestRequestEntry WHERE Id='" + testSetupId + "'";
+            command.Connection = connection;
+            command.CommandText = query;
+            List<TestRequest> testTypes = new List<TestRequest>();
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                int i = 0;
+                while (reader.Read())
+                {
+                    TestRequest aTestType = new TestRequest();
+                    i++;
+                    aTestType.Id = i;
+                    aTestType.Test = reader["TestName"].ToString();
+                    aTestType.Fee = Convert.ToDouble(reader["Fee"].ToString());
+
+
+
+                    testTypes.Add(aTestType);
+                }
+                reader.Close();
+            }
+            connection.Close();
+            return testTypes;
+
+
+        }
+
         public List<TestSet> GetAllTestName()
         {
 
@@ -53,6 +89,18 @@ namespace DiagnosticBillManagementApp.DAL
             connection.Close();
             return rowAffected;
 
+        }
+
+        public int SaveBillNumber(int id, string billNumber)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            string query = "UPDATE t_testrequest SET BillNumber='" + billNumber + "' WHERE Id='" + (id) + "'";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            int rowAffected = command.ExecuteNonQuery();
+            connection.Close();
+            return rowAffected;
         }
 
         public int SetRelations(int tRequest, int tSetup)

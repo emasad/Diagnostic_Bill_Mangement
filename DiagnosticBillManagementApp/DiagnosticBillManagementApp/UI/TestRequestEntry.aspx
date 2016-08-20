@@ -53,6 +53,31 @@
             <asp:Label ID="messageLabel" runat="server"></asp:Label>
         </p>
         <asp:GridView ID="showTestRequestGridView" runat="server" AutoGenerateColumns="False">
+            
+            <Columns>
+               <asp:TemplateField HeaderText="SL">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                 <asp:TemplateField HeaderText="Test Name">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("Test") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                    <asp:TemplateField HeaderText="Fee">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("Fee") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                 
+                  
+
+            </Columns>
+
         </asp:GridView>
 
         <br />

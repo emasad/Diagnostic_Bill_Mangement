@@ -12,7 +12,7 @@ namespace DiagnosticBillManagementApp.UI
     public partial class TestRequestEntry : System.Web.UI.Page
     {
         TestRequest aTestRequest= new TestRequest();
-        public int i = 0;
+        public int billNumber=0;
         private int testRequestId;
         private int testSetupId;
         TestRequestManager aTestRequestManager= new TestRequestManager();
@@ -29,8 +29,8 @@ namespace DiagnosticBillManagementApp.UI
             {
                 LoadTestNameDropdown();
 
-                
             }
+
         }
 
         protected void saveButton_Click(object sender, EventArgs e)
@@ -48,8 +48,15 @@ namespace DiagnosticBillManagementApp.UI
                     aTestRequest.PatientName = patientNameTextBox.Text;
                     aTestRequest.DateOfBirth = Convert.ToDateTime(dateBirthTextBox.Text);
                     aTestRequest.MobileNo = mobileNoTextBox.Text;
+                    
+                    
                     aTestRequestManager.Save(aTestRequest);
+                    
                     testRequestId=aTestRequestManager.GetTestRequestId();
+
+                    billNumber = testRequestId + 10000;
+                    aTestRequestManager.SaveBillNumber(testRequestId, billNumber.ToString());
+
                     testSetupId = Convert.ToInt32(testTypeDropDown.SelectedValue);
 
                     if (aTestRequestManager.SetRelations(testRequestId, testSetupId))
@@ -61,6 +68,7 @@ namespace DiagnosticBillManagementApp.UI
                         messageLabel.Text = "Fail.";
                     }
 
+                    LoadTestNameGridView();
 
                     ViewState["Id"] = testRequestId;
 
@@ -83,6 +91,8 @@ namespace DiagnosticBillManagementApp.UI
                 {
                     messageLabel.Text = "Fail.";
                 }
+                LoadTestNameGridView();
+
             }
             
 
@@ -99,7 +109,16 @@ namespace DiagnosticBillManagementApp.UI
 
         protected void totalSaveButton_Click(object sender, EventArgs e)
         {
+            
 
+            ViewState["Id"] = null;
+        }
+
+        private void LoadTestNameGridView()
+        {
+            List<TestRequest> aTestTypes = aTestRequestManager.GetAllTypeNameFee(testRequestId);
+            showTestRequestGridView.DataSource = aTestTypes;
+            showTestRequestGridView.DataBind();
         }
     }
 }

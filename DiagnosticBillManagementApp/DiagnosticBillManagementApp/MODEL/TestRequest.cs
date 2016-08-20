@@ -15,5 +15,7 @@ namespace DiagnosticBillManagementApp.MODEL
         public DateTime CurrentDate { get; set; }
         public double  PaidBill { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public string Test { get; set; }
+        public double Fee { get; set; }
     }
 }

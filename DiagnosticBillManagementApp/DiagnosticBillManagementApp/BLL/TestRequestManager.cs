@@ -10,7 +10,18 @@ namespace DiagnosticBillManagementApp.BLL
     public class TestRequestManager
     {
         TestRequestGateway aTestRequestGateway= new TestRequestGateway();
-        
+
+        public List<TestRequest> GetAllTypeNameFee(int testSetupId)
+        {
+            return aTestRequestGateway.GetAllTypeNameFee(testSetupId);
+        }
+
+        public bool SaveBillNumber(int id, string billNumber)
+        {
+            bool isSaved = aTestRequestGateway.SaveBillNumber(id, billNumber) > 0;
+            return isSaved;
+        }
+
          
         public List<TestSet> GetAllTestName()
         {
