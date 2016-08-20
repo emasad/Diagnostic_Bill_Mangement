@@ -77,10 +77,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\TestRequestManager.cs" />
     <Compile Include="BLL\TestSetupManager.cs" />
     <Compile Include="BLL\TestTypeManager.cs" />
+    <Compile Include="DAL\TestRequestGateway.cs" />
     <Compile Include="DAL\TestSetupGateway.cs" />
     <Compile Include="DAL\TestTypeGateway.cs" />
+    <Compile Include="MODEL\TestRequest.cs" />
     <Compile Include="MODEL\TestSet.cs" />
     <Compile Include="MODEL\TestType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

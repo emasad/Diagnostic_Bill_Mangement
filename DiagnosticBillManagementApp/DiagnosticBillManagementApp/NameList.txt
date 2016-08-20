@@ -23,6 +23,9 @@ Layer: UI
 		feeTextBox
 		saveButton
 		showTestRequestGridView
+		testRequestTotalTextBox
+		totalSaveButton
+		messageLabel
 	Payment.aspx
 	TestWiseReport.aspx
 	TypeWiseReport.aspx

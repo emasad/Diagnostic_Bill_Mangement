@@ -10,14 +10,19 @@
     <form id="form1" runat="server">
     <div>
         <fieldset>
-            <legend>Test Request Entry</legend>
+            &nbsp;<legend>Test Request Entry</legend>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name Of the Patient&nbsp;&nbsp;
             <asp:TextBox ID="patientNameTextBox" runat="server" Width="221px"></asp:TextBox>
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date of Birth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="dateBirthTextBox" runat="server" Width="221px"></asp:TextBox>
+            
+            
+            <EditItemTemplate>
+    <asp:TextBox ID="dateBirthTextBox" runat="server" Text='<%# Bind("DateofBirth", "{0:yyyy-MM-dd}") %>' TextMode="Date"></asp:TextBox>
+</EditItemTemplate>
+            <%--<asp:TextBox ID="dateBirthTextBox" runat="server" Width="221px"></asp:TextBox>--%>
             <br />
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mobile No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -35,7 +40,7 @@
             <br />
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="saveButton" runat="server" Text="Save" Width="73px" OnClick="saveButton_Click" />
+            <asp:Button ID="saveButton" runat="server" Text="Add" Width="73px" OnClick="saveButton_Click" />
         </fieldset>
     
     
@@ -45,9 +50,23 @@
     </div>
         
         <p>
-            &nbsp;</p>
-        <asp:GridView ID="showTestRequestGridView" runat="server">
+            <asp:Label ID="messageLabel" runat="server"></asp:Label>
+        </p>
+        <asp:GridView ID="showTestRequestGridView" runat="server" AutoGenerateColumns="False">
         </asp:GridView>
+
+        <br />
+        <br />
+        <asp:Label runat="server" Text="Total"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="testRequestTotalTextBox" runat="server"></asp:TextBox>
+        <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="totalSaveButton" runat="server" Text="Save" Width="73px" OnClick="totalSaveButton_Click" />
+        <br />
+
+        <br />
+
     </form>
 </body>
 </html>
