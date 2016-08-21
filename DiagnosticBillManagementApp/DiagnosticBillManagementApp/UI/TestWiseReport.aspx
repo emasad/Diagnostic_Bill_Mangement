@@ -19,23 +19,58 @@
                 <tr>
                     <td>From Date</td>
                     <td>
-                        <asp:TextBox ID="testFromDateTextBox" runat="server"></asp:TextBox>
+                        <EditItemTemplate>
+    <asp:TextBox ID="testFromDateTextBox" runat="server" Text='<%# Bind("DateofBirth", "{0:yyyy-MM-dd}") %>' TextMode="Date"></asp:TextBox>
+</EditItemTemplate>
+                        
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>To Date</td>
                     <td>
-                        <asp:TextBox ID="testToDateTextBox" runat="server"></asp:TextBox>
+                        <EditItemTemplate>
+    <asp:TextBox ID="testToDateTextBox" runat="server" Text='<%# Bind("DateofBirth", "{0:yyyy-MM-dd}") %>' TextMode="Date"></asp:TextBox>
+</EditItemTemplate>
+                       
 &nbsp;&nbsp;
                         <asp:Button ID="testShowButton" runat="server" Text="Show" OnClick="testShowButton_Click" />
                     </td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
+            <asp:Label ID="messageLabel" runat="server"></asp:Label>
             <br />
             <br />
-            <asp:GridView ID="testGridView" runat="server">
+            <asp:GridView ID="testGridView" runat="server" AutoGenerateColumns="False">
+                
+                <Columns>
+               <asp:TemplateField HeaderText="SL">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                 <asp:TemplateField HeaderText="Test Name">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("TestName") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                 <asp:TemplateField HeaderText="Total Test">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("TotalTest") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                 <asp:TemplateField HeaderText="Total Amount">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("TotalAmount") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+
+                
+            </Columns>
+
             </asp:GridView>
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

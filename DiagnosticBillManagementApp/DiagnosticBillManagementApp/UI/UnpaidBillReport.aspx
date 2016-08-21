@@ -20,14 +20,25 @@
                 <tr>
                     <td>From Date</td>
                     <td>
-                        <asp:TextBox ID="billFromDateTextBox" runat="server"></asp:TextBox>
+                        <EditItemTemplate>
+    <asp:TextBox ID="billFromDateTextBox" runat="server" Text='<%# Bind("DateofBirth", "{0:yyyy-MM-dd}") %>' TextMode="Date"></asp:TextBox>
+</EditItemTemplate>
+                        
+                        
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>To Date</td>
                     <td>
-                        <asp:TextBox ID="billToDateTextBox" runat="server"></asp:TextBox>
+                        
+                        <EditItemTemplate>
+    <asp:TextBox ID="billToDateTextBox" runat="server" Text='<%# Bind("DateofBirth", "{0:yyyy-MM-dd}") %>' TextMode="Date"></asp:TextBox>
+</EditItemTemplate>
+                        
+                        
+
+                        
 &nbsp;&nbsp;
                         <asp:Button ID="billShowButton" runat="server" Text="Show" OnClick="billShowButton_Click" style="height: 26px" />
                     </td>

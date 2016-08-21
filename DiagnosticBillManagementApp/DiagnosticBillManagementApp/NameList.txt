@@ -40,7 +40,25 @@ Layer: UI
 
 
 	TestWiseReport.aspx
+		testFromDateTextBox
+		testToDateTextBox
+		testShowButton
+		messageLabel
+		testGridView
+		testPdfButton
+		testTotalTextBox
+
+
+
 	TypeWiseReport.aspx
+		typeFromDateTextBox
+		typeFromDateTextBox
+		typeShowButton
+		messageLabel
+		typeGridView
+		typePdfButton
+		typeTotalTextBox
+
 	UnpaidBillReport.aspx
 
 Layer: BLL

@@ -24,10 +24,11 @@ namespace DiagnosticBillManagementApp.UI
         protected void searchButton_Click(object sender, EventArgs e)
         {
 
-            if (billNoTextBox.Text == "")
+            int intParsed;
+            if (billNoTextBox.Text == "" || !(int.TryParse(billNoTextBox.Text.Trim(),out intParsed)))
             {
 
-                messageLabel.Text = "Please Fill Testbox.";
+                messageLabel.Text = "Please Fill Testbox With Correct Numeric value.";
                 return;
 
             }
@@ -64,9 +65,11 @@ namespace DiagnosticBillManagementApp.UI
 
         protected void payButton_Click(object sender, EventArgs e)
         {
-            if (amountTextBox.Text == "" || billNoTextBox.Text == "")
+            double v;
+
+            if (amountTextBox.Text == "" || billNoTextBox.Text == "" || !(Double.TryParse(amountTextBox.Text.Trim(), out v)))
             {
-                messageLabel.Text = "Please Fill the Textbox.";
+                messageLabel.Text = "Please Fill the Textbox With Numeric Value.";
                 return;
             }
             else
