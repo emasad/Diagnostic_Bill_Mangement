@@ -83,12 +83,14 @@
     <Compile Include="BLL\TestTypeManager.cs" />
     <Compile Include="BLL\TestWiseManager.cs" />
     <Compile Include="BLL\TypeWiseManager.cs" />
+    <Compile Include="BLL\UnpaidBillManager.cs" />
     <Compile Include="DAL\PaymentsGateway.cs" />
     <Compile Include="DAL\TestRequestGateway.cs" />
     <Compile Include="DAL\TestSetupGateway.cs" />
     <Compile Include="DAL\TestTypeGateway.cs" />
     <Compile Include="DAL\TestWiseGateWay.cs" />
     <Compile Include="DAL\TypeWiseGateWay.cs" />
+    <Compile Include="DAL\UnpaidBillGateWay.cs" />
     <Compile Include="MODEL\Payments.cs" />
     <Compile Include="MODEL\PaymentsBills.cs" />
     <Compile Include="MODEL\TestRequest.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="MODEL\TestType.cs" />
     <Compile Include="MODEL\TestWise.cs" />
     <Compile Include="MODEL\TypeWise.cs" />
+    <Compile Include="MODEL\UnpaidBillcs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

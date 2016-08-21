@@ -33,7 +33,7 @@
                     <td>
                         
                         <EditItemTemplate>
-    <asp:TextBox ID="billToDateTextBox" runat="server" Text='<%# Bind("DateofBirth", "{0:yyyy-MM-dd}") %>' TextMode="Date"></asp:TextBox>
+    <asp:TextBox ID="billToDateTextBox" runat="server" Text='<%# Bind("DateofBirth", "{0:yyyy-MM-dd}") %>' TextMode="Date" OnTextChanged="billToDateTextBox_TextChanged"></asp:TextBox>
 </EditItemTemplate>
                         
                         
@@ -45,9 +45,37 @@
                     <td>&nbsp;</td>
                 </tr>
             </table>
+            <asp:Label ID="messageLabel" runat="server" Text="Label"></asp:Label>
             <br />
             <br />
-            <asp:GridView ID="billGridView" runat="server">
+            <asp:GridView ID="billGridView" runat="server" AutoGenerateColumns="False">
+                
+                <Columns>
+               <asp:TemplateField HeaderText="Bill Number">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                 <asp:TemplateField HeaderText="Contact No">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("ContactNo") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                 <asp:TemplateField HeaderText="Patient Name">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("PatientName") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+                
+                 <asp:TemplateField HeaderText="Bill Amount">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("BillAmount") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+
+                
+            </Columns>
             </asp:GridView>
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

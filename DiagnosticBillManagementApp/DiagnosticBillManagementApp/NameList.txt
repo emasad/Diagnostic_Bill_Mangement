@@ -60,6 +60,15 @@ Layer: UI
 		typeTotalTextBox
 
 	UnpaidBillReport.aspx
+		billFromDateTextBox
+		billToDateTextBox
+		billShowButton
+		messageLabel
+		billGridView
+		billPdfButton
+		billTotalTextBox
+
+		
 
 Layer: BLL
 
