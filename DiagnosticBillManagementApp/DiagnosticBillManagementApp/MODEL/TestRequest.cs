@@ -5,7 +5,7 @@ using System.Security.AccessControl;
 using System.Web;
 
 namespace DiagnosticBillManagementApp.MODEL
-{
+{[Serializable]
     public class TestRequest
     {
         public int Id { get; set; }

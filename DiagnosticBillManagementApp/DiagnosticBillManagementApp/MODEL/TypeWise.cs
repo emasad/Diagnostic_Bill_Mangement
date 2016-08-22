@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 
 namespace DiagnosticBillManagementApp.MODEL
-{
+{[Serializable]
+    
     public class TypeWise
     {
         public int Id { get; set; }

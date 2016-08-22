@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 
 namespace DiagnosticBillManagementApp.MODEL
-{
+{[Serializable]
     public class UnpaidBillcs
     {
         public int Id { get; set; }

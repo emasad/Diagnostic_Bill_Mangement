@@ -33,7 +33,7 @@
                     <td>
                         
                         <EditItemTemplate>
-    <asp:TextBox ID="billToDateTextBox" runat="server" Text='<%# Bind("DateofBirth", "{0:yyyy-MM-dd}") %>' TextMode="Date" OnTextChanged="billToDateTextBox_TextChanged"></asp:TextBox>
+    <asp:TextBox ID="billToDateTextBox" runat="server" Text='<%# Bind("DateofBirth", "{0:yyyy-MM-dd}") %>' TextMode="Date" ></asp:TextBox>
 </EditItemTemplate>
                         
                         

@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DiagnosticBillManagementApp.BLL;
 using DiagnosticBillManagementApp.MODEL;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
 
 namespace DiagnosticBillManagementApp.UI
 {
@@ -46,7 +49,9 @@ namespace DiagnosticBillManagementApp.UI
                     aTestRequest.PatientName = patientNameTextBox.Text;
                     aTestRequest.DateOfBirth = Convert.ToDateTime(dateBirthTextBox.Text);
                     aTestRequest.MobileNo = mobileNoTextBox.Text;
-                    
+                    ViewState["PatientName"] = patientNameTextBox.Text;
+                    ViewState["Date"] = dateBirthTextBox.Text;
+                    ViewState["MobileNo"] = mobileNoTextBox.Text;
                     
                     aTestRequestManager.Save(aTestRequest);
                     
@@ -84,7 +89,7 @@ namespace DiagnosticBillManagementApp.UI
 
                 if (aTestRequestManager.SetRelations(testRequestId, testSetupId))
                 {
-                    messageLabel.Text ="ID no "+testSetupId+"is insered.";
+                    messageLabel.Text ="ID no "+testSetupId+" is insered.";
                 }
                 else
                 {
@@ -98,6 +103,7 @@ namespace DiagnosticBillManagementApp.UI
             total = aTestTypes.Sum(item => item.Fee);
             testRequestTotalTextBox.Text = total.ToString();
             feeTextBox.Text = aTestTypes.Last().Fee.ToString();
+            LoadTestNameGridView();
 
         }
 
@@ -122,7 +128,7 @@ namespace DiagnosticBillManagementApp.UI
             List<TestRequest> aTestTypes = aTestRequestManager.GetAllTypeNameFee(testRequestId);
 
             total = aTestTypes.Sum(item => item.Fee);
-
+            ViewState["Total"] = total;
             bool isUpaded= aTestRequestManager.UpdateDateBill(testRequestId, total, paidBill, today);
             if (isUpaded)
             {
@@ -133,6 +139,10 @@ namespace DiagnosticBillManagementApp.UI
                 totalSaveLabel.Text = "Insertion is Fail.";
                 
             }
+
+
+            GeneratePdf();
+
             ViewState["Id"] = null;
             patientNameTextBox.Text="";
             dateBirthTextBox.Text = "";
@@ -146,8 +156,87 @@ namespace DiagnosticBillManagementApp.UI
         private void LoadTestNameGridView()
         {
             List<TestRequest> aTestTypes = aTestRequestManager.GetAllTypeNameFee(testRequestId);
+            
             showTestRequestGridView.DataSource = aTestTypes;
+            ViewState["GridData"] = aTestTypes;
+
             showTestRequestGridView.DataBind();
+        }
+
+        public void GeneratePdf()
+        {
+            showTestRequestGridView.DataSource = (List<TestRequest>)ViewState["GridData"];
+
+            List<TestRequest> aTypeWises = (List<TestRequest>)ViewState["GridData"];
+
+            showTestRequestGridView.DataBind();
+            int CoulmnCount = showTestRequestGridView.HeaderRow.Cells.Count;
+            PdfPTable pdfPTable = new PdfPTable(CoulmnCount);
+
+
+            foreach (TableCell tableCell in showTestRequestGridView.HeaderRow.Cells)
+            {
+                PdfPCell pdfPCell = new PdfPCell(new Phrase(tableCell.Text));
+                pdfPCell.BackgroundColor = new BaseColor(showTestRequestGridView.BackColor);
+                pdfPTable.AddCell(pdfPCell);
+            }
+            //foreach (GridViewRow gridViewRows in typeGridView.Rows)
+            //{
+            //    if(gridViewRows.RowType==DataControlRowType.DataRow)
+            //    foreach (TableCell tableCells in gridViewRows.Cells)
+            //    {
+            //        PdfPCell pdfPCell = new PdfPCell(new Phrase(tableCells.Text));
+            //        pdfPTable.AddCell(pdfPCell);
+            //    }
+
+            //}
+
+            foreach (TestRequest aTestRequest in aTypeWises)
+            {
+                pdfPTable.AddCell(aTestRequest.Id.ToString());
+                pdfPTable.AddCell(aTestRequest.Test);
+                pdfPTable.AddCell(aTestRequest.Fee.ToString());
+                
+
+            }
+
+            Document pdfDocument = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
+            PdfWriter.GetInstance(pdfDocument, Response.OutputStream);
+
+            pdfDocument.Open();
+            string expdate = Convert.ToString(DateTime.Now);
+            Phrase expir = new Phrase("Time: " + expdate + "\n\n\n");
+
+            pdfDocument.Add(expir);
+
+            Paragraph par1 = new Paragraph("Patient Information\n\n\n");
+            pdfDocument.Add(par1);
+
+            Paragraph name = new Paragraph("          Name of the Patient: " + ViewState["PatientName"]);
+            pdfDocument.Add(name);
+            Paragraph birthDay = new Paragraph("          Date of Birth: " + ViewState["Date"]);
+            pdfDocument.Add(birthDay);
+            Paragraph mobile = new Paragraph("          Mobile No: " + ViewState["MobileNo"]+"\n");
+            pdfDocument.Add(mobile);
+
+
+            Paragraph par2 = new Paragraph("Patient Selected Test\n\n");
+            pdfDocument.Add(par2);
+
+            pdfDocument.Add(pdfPTable);
+            Paragraph total = new Paragraph("          Total Bill: " + ViewState["Total"]);
+            pdfDocument.Add(total);
+            //string total ="\n\n\nTotal Amount: "+ ViewState["Total"].ToString()+"\n";
+            //Phrase total = new Phrase("\n\n\nTotal Amount: " + Convert.ToString(ViewState["Total"]) + "\n");
+            //pdfDocument.Add(total);
+
+            pdfDocument.Close();
+
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("content-disposition", "attachment;filename=Test Request Entry.pdf");
+            Response.Write(pdfDocument);
+            Response.Flush();
+            Response.End();
         }
     }
 }
