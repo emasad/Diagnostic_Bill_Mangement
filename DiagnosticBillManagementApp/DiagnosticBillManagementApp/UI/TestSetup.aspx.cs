@@ -16,7 +16,12 @@ namespace DiagnosticBillManagementApp.UI
         TestType aTestType=new TestType();
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadTypeNameDropdown();
+            if (!IsPostBack)
+            {
+                LoadTypeNameDropdown();
+                LoadTestTypeGridView();
+            }
+            
         }
 
         
@@ -41,7 +46,7 @@ namespace DiagnosticBillManagementApp.UI
 
                 if (aTestSetupManager.SearchTestNameByName(aTestSet.TestName))
                 {
-                    messageLabel.Text = "TestName Already Exists.";
+                    messageLabel.Text = aTestSet.TestName+", test name already exists.";
                     
 
                 }
@@ -55,8 +60,9 @@ namespace DiagnosticBillManagementApp.UI
                 }
 
             }
-            LoadTestTypeGridView();
-            
+
+            testNameTextBox.Text = "";
+            feeTextBox.Text = "";
         }
 
 

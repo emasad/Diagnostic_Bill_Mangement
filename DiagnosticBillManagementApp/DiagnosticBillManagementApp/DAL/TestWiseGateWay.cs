@@ -23,16 +23,19 @@ namespace DiagnosticBillManagementApp.DAL
 
             SqlDataReader reader = command.ExecuteReader();
             double totalAmount = 0;
-            if (reader.HasRows)
+
+            reader.Read();
+
+            var bill = reader["Total"].ToString();
+            if (!string.IsNullOrEmpty(bill))
             {
-
-                reader.Read();
                 totalAmount = Convert.ToDouble(reader["Total"].ToString());
-                
 
 
-                reader.Close();
             }
+
+            reader.Close();
+            
 
             connection.Close();
             return totalAmount;
@@ -42,14 +45,26 @@ namespace DiagnosticBillManagementApp.DAL
         {
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand();
-
+            
+            
+            
+            
+            
             string query = "select TestName, Count(TestName) As Total, Sum(Fee) as Fee from ViewTestWiseReport where Date >= '" + fromDateTime + "' AND Date <='" + toDateTime + "' group by TestName  ";
+
+            SqlCommand command2 = new SqlCommand();
+
+            string query2 = "select TestName, 0 Total, 0 as Fee from t_testsetup";
+
+            command2.Connection = connection;
+            command2.CommandText = query2;
+            
             command.Connection = connection;
             command.CommandText = query;
             connection.Open();
 
             List<TestWise> aTestWiseList=new List<TestWise>();
-            SqlDataReader reader = command.ExecuteReader();
+            var reader = command.ExecuteReader();
             if (reader.HasRows)
             {
 
@@ -65,6 +80,31 @@ namespace DiagnosticBillManagementApp.DAL
                     aTestWise.TotalAmount = Convert.ToDouble(reader["Fee"].ToString());
                     aTestWiseList.Add(aTestWise);
                 }
+
+
+                reader.Close();
+            }
+
+            else
+            {
+                reader.Close();
+                reader = command2.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    int i = 0;
+                    while (reader.Read())
+                    {
+                        TestWise aTestWise = new TestWise();
+                        i++;
+                        aTestWise.Id = i;
+                        aTestWise.TestName = reader["TestName"].ToString();
+
+                        aTestWise.TotalTest = Convert.ToInt32(reader["Total"].ToString());
+                        aTestWise.TotalAmount = Convert.ToDouble(reader["Fee"].ToString());
+                        aTestWiseList.Add(aTestWise);
+                    }
+                }
+                
 
 
                 reader.Close();

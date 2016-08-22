@@ -24,16 +24,20 @@ namespace DiagnosticBillManagementApp.DAL
 
             SqlDataReader reader = command.ExecuteReader();
             double totalAmount = 0;
-            if (reader.HasRows)
+            
+
+            reader.Read();
+
+            var bill= reader["TotalBill"].ToString();
+            if (!string.IsNullOrEmpty(bill))
             {
-
-                reader.Read();
                 totalAmount = Convert.ToDouble(reader["TotalBill"].ToString());
-
-
-
-                reader.Close();
+                
             }
+            
+
+            reader.Close();
+            
 
             connection.Close();
             return totalAmount;

@@ -25,6 +25,8 @@ namespace DiagnosticBillManagementApp.UI
         {
 
             int intParsed;
+            
+            
             if (billNoTextBox.Text == "" || !(int.TryParse(billNoTextBox.Text.Trim(),out intParsed)))
             {
 
@@ -66,16 +68,18 @@ namespace DiagnosticBillManagementApp.UI
         protected void payButton_Click(object sender, EventArgs e)
         {
             double v;
-
+            messageLabel.Text = "";
             if (amountTextBox.Text == "" || billNoTextBox.Text == "" || !(Double.TryParse(amountTextBox.Text.Trim(), out v)))
             {
-                messageLabel.Text = "Please Fill the Textbox With Numeric Value.";
+                payLabel.Text = "Please Fill the Textbox With Numeric Value.";
                 return;
             }
             else
             {
+
+                double due = (Convert.ToDouble(totalFeeLabel.Text) - Convert.ToDouble(paidAmountLabel.Text));
                 //double v;Double.TryParse(amountTextBox.Text.Trim(), out v) &&
-                if ((Convert.ToDouble(totalFeeLabel.Text)-Convert.ToDouble(paidAmountLabel.Text)) > 0 )
+                if (due > 0 && due >= Convert.ToDouble(amountTextBox.Text))
                 {
 
                     billNumber = Convert.ToInt32(billNoTextBox.Text);
@@ -83,24 +87,24 @@ namespace DiagnosticBillManagementApp.UI
                     result = Convert.ToDouble(amountTextBox.Text);
                     if (aPaymentsManager.UpdateDateBill(billNumber, result))
                     {
-                        messageLabel.Text = "Due is Reduced.";
+                        payLabel.Text = "Due is Reduced.";
                         
                     }
                     else
                     {
-                        messageLabel.Text = "Due is not Reduced.";
+                        payLabel.Text = "Due is not Reduced.";
                         
                     }
                }
 
                 else if ((Convert.ToDouble(totalFeeLabel.Text) - Convert.ToDouble(paidAmountLabel.Text)) == 0)
                 {
-                    messageLabel.Text = "You have no due.";
+                    payLabel.Text = "You have no due.";
                     
                 }
                 else
                 {
-                    messageLabel.Text = "Please Enter Numeric Values.";
+                    payLabel.Text = "Please enter fee not more than " + due;
                     
                 }
             }
@@ -112,6 +116,9 @@ namespace DiagnosticBillManagementApp.UI
             totalFeeLabel.Text = "";
             paidAmountLabel.Text ="";
             dueAmountLabel.Text = "";
+
+            paymentGridView.DataSource = null;
+            paymentGridView.DataBind();
         }
 
 

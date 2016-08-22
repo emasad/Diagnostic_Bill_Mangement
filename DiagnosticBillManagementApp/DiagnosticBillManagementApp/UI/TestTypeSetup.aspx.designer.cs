@@ -31,15 +31,6 @@ namespace DiagnosticBillManagementApp.UI {
         protected global::System.Web.UI.WebControls.TextBox typeNameTextBox;
         
         /// <summary>
-        /// messgaeLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label messgaeLabel;
-        
-        /// <summary>
         /// saveButton control.
         /// </summary>
         /// <remarks>
@@ -47,6 +38,15 @@ namespace DiagnosticBillManagementApp.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button saveButton;
+        
+        /// <summary>
+        /// messgaeLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label messgaeLabel;
         
         /// <summary>
         /// showTypeNameGridView control.

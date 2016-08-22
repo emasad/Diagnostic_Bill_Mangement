@@ -22,15 +22,16 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="messgaeLabel" runat="server"></asp:Label>
-                </td>
+                    &nbsp;</td>
                 <td>
                     <asp:Button ID="saveButton" runat="server" Height="31px" OnClick="saveButton_Click" Text="Save" Width="82px" />
                 </td>
             </tr>
         </table>
+        <br />
+                    <asp:Label ID="messgaeLabel" runat="server"></asp:Label>
         <p>
-            <asp:GridView ID="showTypeNameGridView" runat="server" AutoGenerateColumns="False">
+            <asp:GridView ID="showTypeNameGridView" runat="server" AutoGenerateColumns="False" >
                 
                 <Columns>
                <asp:TemplateField HeaderText="SL">

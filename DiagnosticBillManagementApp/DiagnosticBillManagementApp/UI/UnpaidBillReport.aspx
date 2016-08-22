@@ -51,9 +51,18 @@
             <asp:GridView ID="billGridView" runat="server" AutoGenerateColumns="False">
                 
                 <Columns>
-               <asp:TemplateField HeaderText="Bill Number">
+                    
+
+
+               
+               <asp:TemplateField HeaderText="Sl">
                    <ItemTemplate>
                        <asp:Label runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                   </ItemTemplate>
+               </asp:TemplateField>
+               <asp:TemplateField HeaderText="Bill Number">
+                   <ItemTemplate>
+                       <asp:Label runat="server" Text='<%#Eval("BillNumber") %>'></asp:Label>
                    </ItemTemplate>
                </asp:TemplateField>
                 
