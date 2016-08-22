@@ -58,6 +58,7 @@ namespace DiagnosticBillManagementApp.UI
                     testRequestId=aTestRequestManager.GetTestRequestId();
 
                     billNumber = testRequestId + 10000;
+                    ViewState["BillNumber"] = billNumber;
                     aTestRequestManager.SaveBillNumber(testRequestId, billNumber.ToString());
 
                     testSetupId = Convert.ToInt32(testTypeDropDown.SelectedValue);
@@ -209,8 +210,12 @@ namespace DiagnosticBillManagementApp.UI
 
             pdfDocument.Add(expir);
 
-            Paragraph par1 = new Paragraph("Patient Information\n\n\n");
+            Paragraph par1 = new Paragraph("Patient Information");
             pdfDocument.Add(par1);
+
+            Paragraph billNumber = new Paragraph("Bill Number: " + ViewState["BillNumber"] + "\n\n\n");
+            pdfDocument.Add(billNumber);
+            
 
             Paragraph name = new Paragraph("          Name of the Patient: " + ViewState["PatientName"]);
             pdfDocument.Add(name);
