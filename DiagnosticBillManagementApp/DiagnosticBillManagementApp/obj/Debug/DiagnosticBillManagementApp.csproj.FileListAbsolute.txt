@@ -4,5 +4,4 @@ C:\Users\Asadullah\Source\Repos\Diagnostic_Bill_Mangement\DiagnosticBillManageme
 C:\Users\Asadullah\Source\Repos\Diagnostic_Bill_Mangement\DiagnosticBillManagementApp\DiagnosticBillManagementApp\obj\Debug\DiagnosticBillManagementApp.csprojResolveAssemblyReference.cache
 C:\Users\Asadullah\Source\Repos\Diagnostic_Bill_Mangement\DiagnosticBillManagementApp\DiagnosticBillManagementApp\obj\Debug\DiagnosticBillManagementApp.dll
 C:\Users\Asadullah\Source\Repos\Diagnostic_Bill_Mangement\DiagnosticBillManagementApp\DiagnosticBillManagementApp\obj\Debug\DiagnosticBillManagementApp.pdb
-C:\Users\Asadullah\Source\Repos\Diagnostic_Bill_Mangement\DiagnosticBillManagementApp\DiagnosticBillManagementApp\bin\itextsharp.dll
 C:\Users\Asadullah\Source\Repos\Diagnostic_Bill_Mangement\DiagnosticBillManagementApp\DiagnosticBillManagementApp\bin\itextsharp.xml

@@ -15,8 +15,11 @@ namespace DiagnosticBillManagementApp.UI
         TestTypeManager aTestTypeManager= new TestTypeManager();
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadTestTypeGridView();
-
+            if (!IsPostBack)
+            {
+                LoadTestTypeGridView();
+                
+            }
 
         }
 
@@ -43,6 +46,8 @@ namespace DiagnosticBillManagementApp.UI
 
                 }
             }
+            LoadTestTypeGridView();
+
 
         }
 

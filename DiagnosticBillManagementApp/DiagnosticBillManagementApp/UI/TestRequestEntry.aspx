@@ -31,7 +31,7 @@
             <br />
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Select Test&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="testTypeDropDown" runat="server" Height="16px" Width="230px">
+            <asp:DropDownList ID="testTypeDropDown" runat="server" AutoPostBack="True" Height="16px" Width="230px" OnSelectedIndexChanged="testTypeDropDown_SelectedIndexChanged">
             </asp:DropDownList>
             <br />
             <br />

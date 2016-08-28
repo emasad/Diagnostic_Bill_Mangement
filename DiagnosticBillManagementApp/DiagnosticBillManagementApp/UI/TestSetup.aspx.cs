@@ -18,9 +18,10 @@ namespace DiagnosticBillManagementApp.UI
         {
             if (!IsPostBack)
             {
-                LoadTypeNameDropdown();
                 LoadTestTypeGridView();
             }
+            LoadTypeNameDropdown();
+
             
         }
 
@@ -47,22 +48,19 @@ namespace DiagnosticBillManagementApp.UI
                 if (aTestSetupManager.SearchTestNameByName(aTestSet.TestName))
                 {
                     messageLabel.Text = aTestSet.TestName+", test name already exists.";
-                    
-
                 }
 
                 else
                 {
                     aTestSetupManager.Save(aTestSet);
                     messageLabel.Text = "Successfully Inserted.";
-
-
                 }
 
             }
 
             testNameTextBox.Text = "";
             feeTextBox.Text = "";
+            LoadTestTypeGridView();
         }
 
 

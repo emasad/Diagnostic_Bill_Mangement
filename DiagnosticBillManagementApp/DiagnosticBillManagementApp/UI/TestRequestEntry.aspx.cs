@@ -141,6 +141,7 @@ namespace DiagnosticBillManagementApp.UI
                 
             }
 
+            totalSaveLabel.Text = "All info Succesfully inserted.";
 
             GeneratePdf();
 
@@ -242,6 +243,11 @@ namespace DiagnosticBillManagementApp.UI
             Response.Write(pdfDocument);
             Response.Flush();
             Response.End();
+        }
+
+        protected void testTypeDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var v = 1;
         }
     }
 }
